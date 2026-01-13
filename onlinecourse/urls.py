@@ -18,8 +18,19 @@ urlpatterns = [
     path('<int:course_id>/enroll/', views.enroll, name='enroll'),
     path('<int:course_id>/submit/', views.submit, name="submit"),
 
-    # <HINT> Create a route for submit view
+   
+    
+    # ✅ REQUIRED FOR EXAM SUBMISSION
+    path('<int:course_id>/submit/', views.submit, name='submit'),
 
-    # <HINT> Create a route for show_exam_result view
+    # ✅ REQUIRED FOR EXAM RESULT (THIS IS THE MISSING ONE)
+    path(
+        '<int:course_id>/submission/<int:submission_id>/result/',
+        views.show_exam_result,
+        name='exam_result'
+    ),
+]
 
+
+    
  ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
